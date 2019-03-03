@@ -1,0 +1,95 @@
+$sprimary : #577ee8 ;
+$slink : #ffffff;
+$shoverlink: #d8d5cb;
+body{
+	font-family: 'Lato', sans-serif;
+}
+#header{
+	background-color: $sprimary;
+	.logo{
+		max-width: 150px;
+		a{
+			img{
+				width: 100%;
+			}
+		}
+	}
+	ul{
+		li{
+			a{
+				color: $slink;
+				&:hover{
+					text-decoration: none;
+					color: $shoverlink;
+					-webkit-transition: all 0.2s ease-out;
+					-moz-transition: all 0.2s ease-out;
+					-o-transition: all 0.2s ease-out;
+					transition: all 0.2s ease-out;
+				}
+				&:focus{
+					outline: 0;
+				}
+			}
+		}
+	}
+	.search{
+		// input[type="text"]{
+		// 	width: 80%;
+		// }
+		button{
+		    padding: 8px 8px;
+		    margin: 0;
+		    background-color: #ffffff;
+		    border: none;
+		    max-width: 34px;
+			img{
+				width: 100%
+			}
+			&:focus {
+			    outline: 0;
+			    border: 0;
+			}
+			&:hover{
+				text-decoration: none;
+				background-color: $shoverlink;
+				-webkit-transition: all 0.2s ease-out;
+				-moz-transition: all 0.2s ease-out;
+				-o-transition: all 0.2s ease-out;
+				transition: all 0.2s ease-out;
+			}
+		}
+		input[type="text"] {
+		    width: 130px;
+		    box-sizing: border-box;
+		    border: 2px solid #ccc;
+		    border-radius: 4px;
+			padding: 0;
+			margin-right: -3px;
+			border: none;
+			border-radius: 0;
+		    -webkit-transition: width 0.4s ease-in-out;
+		    transition: width 0.4s ease-in-out;
+			    &:focus {
+			    width: 80%;
+			    outline: 0;
+			    border: 0;
+			}
+		}
+	}
+}
+.slider{
+	height: calc(100vh - 72px);
+	.carousel{
+		height: 100%;
+		.carousel-inner{
+			height: 100%;
+			.carousel-item{
+				height: 100%;
+				img{
+					height: 100%;
+				}
+			}
+		}
+	
+	}	
+}

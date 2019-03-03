@@ -21,6 +21,7 @@ module.exports = {
             // other preprocessors should work out of the box, no loader config like this necessary.
             'scss': 'vue-style-loader!css-loader!sass-loader',
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+            // 'scss': 'styles!css!scss'
           }
           // other vue-loader options go here
         }
@@ -36,6 +37,17 @@ module.exports = {
           fallback: "style-loader",
           use: "css-loader"
         })
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
