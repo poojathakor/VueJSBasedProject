@@ -9,13 +9,15 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.0.0-beta.2",
     "bootstrap-vue": "^1.2.0",
     "flickity": "^2.2.0",
     "popper.js": "^1.12.9",
     "slick-carousel": "^1.8.1",
     "vue": "^2.5.3",
-    "vue-jquery": "^1.0.6"
+    "vue-jquery": "^1.0.6",
+    "vue-router": "^3.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

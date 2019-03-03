@@ -1,13 +1,12 @@
 <template>
   <div id="app">
   	<app-header></app-header>
-    <app-slider></app-slider>
-
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import header from './sample.vue'
+import header from './header.vue'
 import slider from './slider.vue'
 export default {
   name: 'app',
