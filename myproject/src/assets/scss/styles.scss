@@ -1,4 +1,4 @@
-$sprimary : #577ee8 ;
+$sprimary : #79aaa7 ;
 $slink : #ffffff;
 $shoverlink: #d8d5cb;
 body{
@@ -62,7 +62,7 @@ body{
 			}
 		}
 		input[type="text"] {
-		    width: 130px;
+		    width: 80%;
 		    box-sizing: border-box;
 		    border: 2px solid #ccc;
 		    border-radius: 4px;
@@ -90,9 +90,125 @@ body{
 				height: 100%;
 				img{
 					height: 100%;
+					object-fit: cover;
 				}
 			}
-		}
-	
+		}	
 	}	
 }
+.option-details{
+  input[type="radio"], input[type="checkbox"]{
+    display: none;
+  }
+  .option-info{
+    position: relative;
+    .check-box{
+      position: absolute;
+      left: 0;
+      top: 0;
+      // background-color: $primary;
+      // border-color: $primary;
+      border-color: #e2e2e2;
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      border: 1px solid #d7d7d7;
+
+    }
+    .option-title{
+      margin-left: 22px;
+    }
+  }
+	  input[type="checkbox"]:checked+label>span, input[type="checkbox"]:checked+label .check-box{
+	    content: '';
+	    opacity: 1;
+	    display: block;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 18px;
+	    height: 18px;
+	    border: 1px solid #004991;
+	    background: url('../src/assets/images/tick.png') center no-repeat;
+	    background-size: 10px;
+	  }
+  }
+.main-option-details {
+	    margin: 0 20px;
+  input[type="radio"], input[type="checkbox"]{
+    display: none;
+  }
+  label{
+
+  	margin-bottom: 0;
+  }
+  .option-info{
+    position: relative;
+    .check-box{
+		position: absolute;
+		left: 0;
+		top: 0;
+		// background-color: $primary;
+		// border-color: $primary;
+		border-color: #e2e2e2;
+		display: inline-block;
+		border: 1px solid #d7d7d7;
+		width: 100%;
+		color: #ffffff;
+		height: 100%;
+    }
+	    .option-title{
+	      // margin-left: 22px;
+	      padding: 3px 10px 0;
+	      color: #ffffff;
+	    }
+	  }
+	  input[type="radio"]:checked+label>span, input[type="radio"]:checked+label .check-box{
+	    content: '';
+	    opacity: 1;
+	    display: block;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    // width: 18px;
+	    // height: 18px;
+	    // border: 1px solid #004991;
+	    // background: url('../src/assets/images/tick.png') center no-repeat;
+	    // background-size: 10px;
+	    width: 100%;
+	    color: #ffffff;
+	    height: 100%;
+	    // background-color: #000000;
+	    border: 1px solid #000000;
+	  }
+  }
+
+  .dimension, .color{
+  	.main-option-details{
+		display: inline-flex;
+		margin: 5px;
+  		 .option-title{
+	      // margin-left: 22px;
+	      padding: 3px 10px 0;
+	      color: #000000;
+	    }
+
+  	}
+  }
+  .searchreasult{
+  	label+button{
+		background: transparent;
+		color: #000000;
+		border: none;
+		box-shadow:none;
+		&:hover, &:focus, &:active{
+			background: transparent;
+			color: #808080 !important;
+			outline: 0;
+			box-shadow:none !important;
+		}
+  	}
+  	img{
+  		object-fit: contain;
+  	}
+  }
