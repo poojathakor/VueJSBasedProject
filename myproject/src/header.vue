@@ -155,8 +155,10 @@
 
 			 		<div class="col-sm-12 col-lg-4">
 			 			<div>
-			 			<label>Style</label> 
-			 			<b-button v-b-toggle.style class="m-1">+</b-button>
+			 			<div class="filter-head d-flex justify-content-between align-content-center mb-2">
+			 				<label>Style</label> 
+			 				<b-button v-b-toggle.style class="m-1">+</b-button>
+			 			</div>
 			 			<b-collapse visible id="style">
 			 			<div>
 			 				<div class="option-details">
@@ -253,8 +255,10 @@
 			 			</b-collapse>
 			 		</div>
 			 			<div>
-			 			<label>Color</label>
-				 		<b-button v-b-toggle.color class="m-1">+</b-button>
+			 			<div class="filter-head d-flex justify-content-between align-content-center mb-2">
+			 				<label>Color</label>
+				 			<b-button v-b-toggle.color class="m-1">+</b-button>
+				 		</div>
 				 		<b-collapse  id="color">
 				 			<div class="color">
 				 				<div class="main-option-details">
@@ -291,8 +295,10 @@
 				</div>
 					<div  v-if='asset == "icon"'>
 						<div>
-							<label>Dimension</label>
-				 			<b-button v-b-toggle.dimension class="m-1">+</b-button>
+							<div class="filter-head d-flex justify-content-between align-content-center mb-2">
+								<label>Dimension</label>
+					 			<b-button v-b-toggle.dimension class="m-1">+</b-button>
+					 		</div>
 				 			<b-collapse  id="dimension">
 					 			<div class="dimension">
 									<div class="main-option-details">
