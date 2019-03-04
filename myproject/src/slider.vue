@@ -16,14 +16,14 @@
     >
       <!-- Text slides with image -->
       <b-carousel-slide
-        caption="First slide"
-        text="ICON SCOUT"
+        caption="Search through 2 Million plus royalty-free Icons and Images from 400+ Contributors."
+        text="Get high-quality Icons, Illustrations and Stock photos at one place"
         img-src="./src/assets/images/bg1.jpg"
       />
 
       <!-- Slides with custom text -->
       <b-carousel-slide img-src="./src/assets/images/bg2.jpg">
-        <h1>Hello world!</h1>
+        <h1>Search through 2 Million plus royalty-free Icons and Images from 400+ Contributors.</h1>
       </b-carousel-slide>
 
       <!-- Slides with image only -->

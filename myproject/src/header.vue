@@ -1,14 +1,35 @@
 <template>
     <div class="header">
-    	<section id="header" class="py-3">
+    	<section id="header" class="py-2">
 		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-md-2 col-sm-2 col-xs-2">
+			<div>
+				 <b-navbar toggleable="lg">
+				    <b-navbar-brand href="/"><img src="./assets/images/iconscout-logo-white.svg" alt=""> </b-navbar-brand>
+				     <form class="search" action="/" method="get" @submit.prevent="submitsearch">
+							<div class="input-field">
+								<input type="text" id="key" name="key" class="autocomplete  p-2" placeholder="Search anything..." v-model="key" required="">
+								<button type="submit"><img src="./assets/images/searchicon.png"/></button>
+							</div>
+						</form>
+				    <b-navbar-toggle target="nav_collapse" />
+
+				    <b-collapse is-nav id="nav_collapse">
+				      <b-navbar-nav class="ml-auto">
+					        <b-nav-item href="#">Sign In</b-nav-item>
+					        <b-nav-item href="#">Sign Up</b-nav-item>
+					      
+				      </b-navbar-nav>
+				    </b-collapse>
+				  </b-navbar>
+				</div>
+
+			<!-- <div class="">
+				<div class="col-md-2 col-sm-12 col-xs-2">
 					<div class="logo">
 						<a href="/"><img src="./assets/images/iconscout-logo-white.svg" alt=""> </a>
 					</div>
 				</div>
-				<div class="col-md-5 col-sm-5">
+				<div class="col-md-5 col-sm-12">
 					<form class="search" action="/" method="get" @submit.prevent="submitsearch">
 						<div class="input-field">
 							<input type="text" id="key" name="key" class="autocomplete  p-2" placeholder="Search anything..." v-model="key" required="">
@@ -16,7 +37,7 @@
 						</div>
 					</form>
 				</div>
-				<div class="col-md-5 col-sm-5">
+				<div class="col-md-5 col-sm-12">
 					<div>
 						<ul class="list-inline d-flex align-items-center justify-content-end mb-0">
 							<li class="mx-2"><a href="register.html">My Scout</a> </li>
@@ -25,10 +46,10 @@
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<div v-if="locationSetup">
 				<div class="row mt-3" >
-					<div class="col-sm-4 d-flex">
+					<div class="col-sm-6 col-lg-4 d-flex my-1">
 						<div class="main-option-details">
 							<input type="radio" name="asset"  id="icon" v-model="asset" value="icon" v-on:change="submitsearch">
 							<label class="option-info" for="icon">
@@ -58,7 +79,7 @@
 						</div>
 
 					</div>
-					<div class="col-sm-4 d-flex">
+					<div class="col-sm-6 col-lg-4 d-flex my-1">
 						<div class="main-option-details">
 							<input type="radio" name="sort"  id="latest" v-model="sortby" value="latest" v-on:change="submitsearch">
 							<label class="option-info" for="latest">
@@ -90,7 +111,7 @@
 						</div>
 
 					</div>
-					<div class="col-sm-4 d-flex">
+					<div class="col-sm-6 col-lg-4 d-flex my-1">
 
 						<div class="main-option-details">
 						<input type="radio" name="price"  id="free" v-model="price" value="free" v-on:change="submitsearch">
@@ -132,7 +153,7 @@
 			 <div class="searchreasult p-3">
 			 	<div class="row" >
 
-			 		<div class="col-sm-4">
+			 		<div class="col-sm-12 col-lg-4">
 			 			<div>
 			 			<label>Style</label> 
 			 			<b-button v-b-toggle.style class="m-1">+</b-button>
@@ -462,12 +483,31 @@
 						</b-collapse>
 						</div>
 			 		</div>
-			 		<div class="col-sm-8">
-				    	<div class="row" v-if='asset == "icon"'>
-					    	<div v-for="item in items" class="col-sm-2 col-12 my-1"><img :src="item" class="w-100 h-100" /></div>
+			 		<div class="col-sm-12 col-lg-8">
+				    	<div class="row show-images" v-if='asset == "icon"'>
+					    	<div v-for="(item,i) in items"  v-if="item.img_url != null" class="col-sm-3 col-md-2 col-12 my-1">
+								<!-- <h1 v-text="item.name"></h1>
+					    		<p v-text="item.desc"></p> -->
+					    		<b-button v-b-modal="item.img_url">
+					    			<img :src="item.img_url" class="w-100 h-100" />
+					    		</b-button>
+					    		<b-modal :id="item.img_url">
+					    			<h1 v-text="item.name"></h1>
+					    			<p v-text="item.desc"></p>
+					    		</b-modal>	
+					    	</div>
+
 					    </div>
-					    <div class="row" v-else>
-					    	<div v-for="item in items" class="col-sm-4 col-12 my-1"><img :src="item" class="w-100 h-100" /></div>
+					    <div class="row show-images" v-else>
+					    	<div v-for="(item,i) in items"  v-if="item.img_url != null" class="col-sm-6 col-md-4 col-12 my-1">
+					    		<b-button v-b-modal="item.img_url">
+					    			<img :src="item.img_url" class="w-100 h-100" />
+					    		</b-button>
+					    		<b-modal :id="item.img_url">
+					    			<h1>{{item.name}}</h1>
+					    			<p>{{item.desc}}</p>
+					    		</b-modal>	
+					    	</div>
 					    </div>
 				    </div>
 			    </div>
@@ -478,13 +518,12 @@
 </template>
 
 <script>
-	import axios from 'axios';
+import axios from 'axios';
 export default {
     data(){
     	return{
     		key : '',
     		items: [],
-    		
     		info: '',
     		locationSetup : false,
     		asset:'icon',
@@ -494,32 +533,35 @@ export default {
     		color: '',
     		dimension: '',
     		orientation: [],
-    		title_of_item :[],
-    		height_of_item :[],
-    		desc_of_item: []
+    		// title_of_item :[],
+    		// height_of_item :[],
+    		// desc_of_item: []
     	}
     },
     methods:{
     	submitsearch(){
-    		// console.log(this.key);
-    		var i = 0,j=0;
-    		var key = this.key;
+    		
+     		let i = 0,j=0;
+    		let key = this.key;
+    		
     		window.location.href = "/#/search";
     		this.locationSetup = true;
     		this.items = [];
-    		this.title_of_item = [];
-    		this.height_of_item=[];
-    		this.desc_of_item = [];
-    		var asset = this.asset;
-    		var sortby = this.sortby;
-    		var price = this.price;
+    		console.log(this.items);
+    		// this.title_of_item = [];
+    		// this.height_of_item=[];
+    		// this.desc_of_item = [];
+    		// debugger;
+    		let asset = this.asset;
+    		let sortby = this.sortby;
+    		let price = this.price;
     		// console.log(asset);
-    		var style = this.style;
-    		var appendary= '';
-    		var orientationary = '';
-    		var color = this.color;
-    		var dimension = this.dimension;
-    		var orientation = this.orientation;
+    		let style = this.style;
+    		let appendary= '';
+    		let orientationary = '';
+    		let color = this.color;
+    		let dimension = this.dimension;
+    		let orientation = this.orientation;
     		// console.log(style);
     		if(style.length > 0){
     			style.forEach(function(element) {
@@ -535,30 +577,33 @@ export default {
 				});
     			console.log(orientationary); 
     		}
+    		// console.log(this.items, "Hi =====");
     		console.log('https://api.iconscout.com/v2/search?product_type=item&query='+key+'&asset='+asset+'&sort='+sortby+'&icon_grid='+dimension+'&color='+color+'&per_page=&price='+price+appendary+orientationary+'');
     		axios
 
 		      .get('https://api.iconscout.com/v2/search?product_type=item&query='+key+'&asset='+asset+'&sort='+sortby+'&icon_grid='+dimension+'&color='+color+'&per_page=&price='+price+appendary+orientationary+'')
 		      .then(response => {
 		        this.info = response.data.bpi
-		        console.log(response);
+		        // console.log(response);
 		        for(i = 0;i < response.data.response.items.data.length ; i++){
 		        	if(asset == 'icon')
 		        	{
-		        		this.items.push(response.data.response.items.data[i].urls.png_128);
-		        		this.title_of_item.push(response.data.response.items.data[i].name);
-		        		this.desc_of_item.push(response.data.response.items.data[i].license.description);
-		        		this.height_of_item.push(response.data.response.items.data[i].license.height);
+		        		this.items.push({img_url:response.data.response.items.data[i].urls.png_128, name:response.data.response.items.data[i].name , desc:response.data.response.items.data[i].license.description , height:response.data.response.items.data[i].license.height});
+		        		
 		        		// console.log(this.items);
+		        		// console.log(this.items, "pooja =====");
 		        	}
 		        	else if(asset == 'photo' || asset == 'illustration'){
-		        		this.items.push(response.data.response.items.data[i].urls.thumb);
-		        		this.title_of_item.push(response.data.response.items.data[i].name);
-		        		this.desc_of_item.push(response.data.response.items.data[i].license.description);
-		        		this.height_of_item.push(response.data.response.items.data[i].license.height);
+		        		this.items.push({img_url:response.data.response.items.data[i].urls.thumb, name:response.data.response.items.data[i].name,desc:response.data.response.items.data[i].license.description,height:response.data.response.items.data[i].license.height});
+		        	
+		        		// this.items.push(response.data.response.items.data[i].urls.thumb);
+		        		// this.title_of_item.push(response.data.response.items.data[i].name);
+		        		// this.desc_of_item.push(response.data.response.items.data[i].license.description);
+		        		// this.height_of_item.push(response.data.response.items.data[i].license.height);
 		        		// console.log(this.items);
 		        	}
 		        }
+		        // console.log(this.items);
 		      })
 		      .catch(error => {
 		        console.log(error)

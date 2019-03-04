@@ -1,4 +1,4 @@
-$sprimary : #79aaa7 ;
+$sprimary : #5ca09c ;
 $slink : #ffffff;
 $shoverlink: #d8d5cb;
 body{
@@ -9,13 +9,12 @@ body{
 }
 #header{
 	background-color: $sprimary;
-	.logo{
-		max-width: 150px;
-		a{
+	.navbar-brand{
+		
+			max-width: 150px;
 			img{
 				width: 100%;
 			}
-		}
 	}
 	ul{
 		li{
@@ -39,6 +38,7 @@ body{
 		// input[type="text"]{
 		// 	width: 80%;
 		// }
+		width: 50%;
 		button{
 		    padding: 8px 8px;
 		    margin: 0;
@@ -79,9 +79,10 @@ body{
 			}
 		}
 	}
+	
 }
 .slider{
-	height: calc(100vh - 72px);
+	height: calc(100vh - 76px);
 	.carousel{
 		height: 100%;
 		.carousel-inner{
@@ -170,17 +171,15 @@ body{
 	    position: absolute;
 	    top: 0;
 	    left: 0;
-	    // width: 18px;
-	    // height: 18px;
-	    // border: 1px solid #004991;
-	    // background: url('../src/assets/images/tick.png') center no-repeat;
-	    // background-size: 10px;
 	    width: 100%;
 	    color: #ffffff;
 	    height: 100%;
 	    // background-color: #000000;
 	    border: 1px solid #000000;
 	  }
+	   input[type="radio"]:checked+label .option-title{
+	   	 color: #000000;
+	   }
   }
 
   .dimension, .color{
@@ -212,3 +211,16 @@ body{
   		object-fit: contain;
   	}
   }
+.show-images{
+		.btn-secondary{
+			color:#000000;
+			background-color:transparent;
+			border: transparent;
+			&:hover, &:focus, &:active{
+				background: transparent;
+				color: #000000 !important;
+				outline: 0;
+				box-shadow:none !important;
+				}
+		}
+	}
